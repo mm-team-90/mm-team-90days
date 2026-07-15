@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM team 90日教練學堂</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="90日學堂">
+<meta name="theme-color" content="#1C1F26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<style>
+  :root{
+    --bg:#1C1F26;
+    --bg-raised:#242832;
+    --bg-input:#2C313D;
+    --text:#F7F5F0;
+    --text-dim:#B7BAC2;
+    --accent:#E8622C;
+    --accent-dim:#7A3A22;
+    --teal:#2BA89A;
+    --gold:#D4A73D;
+    --gray:#6B7280;
+    --danger:#C0392B;
+    --font-display:'Bebas Neue','Noto Sans TC',sans-serif;
+    --font-body:'Noto Sans TC',sans-serif;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(232,98,44,0.10), transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(43,168,154,0.08), transparent 40%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  #root{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;top:0;background:rgba(28,31,38,0.92);backdrop-filter:blur(6px);z-index:10;
+  }
+  .brand{display:flex;flex-direction:column;line-height:1.05;cursor:pointer;}
+  .brand .top{font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--accent);}
+  .brand .sub{font-size:11px;color:var(--text-dim);letter-spacing:1px;}
+  .navwrap{display:flex;gap:8px;align-items:center;}
+  .navlink{
+    font-size:13px;color:var(--text-dim);background:transparent;border:1px solid rgba(255,255,255,0.14);
+    padding:7px 12px;border-radius:100px;cursor:pointer;font-family:var(--font-body);
+  }
+  .navlink:active{transform:scale(0.96);}
+  .navlink.active{color:var(--bg);background:var(--accent);border-color:var(--accent);font-weight:700;}
+  .day-pill{
+    font-family:var(--font-display);font-size:15px;color:var(--gold);border:1px solid rgba(212,167,61,0.4);
+    padding:5px 12px;border-radius:100px;letter-spacing:0.5px;white-space:nowrap;
+  }
+  main{flex:1;padding:20px 18px 60px;}
+  .card{
+    background:var(--bg-raised);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius);
+    padding:20px;margin-bottom:16px;
+  }
+  h1.page-title{font-family:var(--font-display);font-size:30px;letter-spacing:0.5px;margin:4px 0 4px;color:var(--text);}
+  h2.section-title{font-family:var(--font-display);font-size:20px;letter-spacing:0.5px;margin:0 0 12px;color:var(--accent);}
+  p.helper{color:var(--text-dim);font-size:13px;margin:0 0 18px;line-height:1.6;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:6px;letter-spacing:0.3px;}
+  .input,select.input{
+    width:100%;padding:13px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);
+    background:var(--bg-input);color:var(--text);font-size:16px;font-family:var(--font-body);
+  }
+  .input:focus{outline:none;border-color:var(--accent);}
+  .btn{
+    width:100%;padding:14px;border-radius:10px;border:none;font-size:15px;font-weight:700;
+    cursor:pointer;font-family:var(--font-body);letter-spacing:0.3px;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--accent);color:#1C1F26;}
+  .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.2);color:var(--text);}
+  .btn-danger{background:transparent;border:1px solid rgba(192,57,43,0.5);color:#E07A6E;}
+  .btn-teal{background:var(--teal);color:#08201d;}
+  .btn-row{display:flex;gap:10px;}
+  .btn-row .btn{flex:1;}
+  .role-grid{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
+  .role-btn{
+    display:flex;align-items:center;gap:14px;padding:18px;border-radius:var(--radius);
+    background:var(--bg-raised);border:1px solid rgba(255,255,255,0.08);cursor:pointer;text-align:left;
+  }
+  .role-btn:active{transform:scale(0.98);}
+  .role-btn .emoji{font-size:26px;}
+  .role-btn .label{font-family:var(--font-display);font-size:19px;letter-spacing:0.5px;}
+  .role-btn .desc{font-size:12px;color:var(--text-dim);margin-top:2px;}
+  .list-item{
+    display:flex;align-items:center;justify-content:space-between;padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .list-item:last-child{border-bottom:none;}
+  .list-item .name{font-weight:700;font-size:15px;}
+  .list-item .meta{font-size:12px;color:var(--text-dim);margin-top:2px;}
+  .pill-small{
+    font-size:11px;background:var(--bg-input);color:var(--text-dim);padding:3px 9px;border-radius:100px;
+  }
+  .icon-btn{background:transparent;border:none;color:var(--gray);font-size:18px;cursor:pointer;padding:6px;}
+  .icon-btn.danger{color:#E07A6E;}
+  .name-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+  .name-tile{
+    padding:18px 10px;background:var(--bg-raised);border:1px solid rgba(255,255,255,0.08);border-radius:12px;
+    text-align:center;font-weight:700;cursor:pointer;font-size:15px;
+  }
+  .name-tile:active{transform:scale(0.96);border-color:var(--accent);}
+  .pin-display{
+    display:flex;justify-content:center;gap:10px;margin:20px 0;
+  }
+  .pin-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--text-dim);}
+  .pin-dot.filled{background:var(--accent);border-color:var(--accent);}
+  .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .key{
+    padding:18px 0;background:var(--bg-raised);border:1px solid rgba(255,255,255,0.1);border-radius:12px;
+    font-family:var(--font-display);font-size:22px;color:var(--text);cursor:pointer;text-align:center;
+  }
+  .key:active{background:var(--accent-dim);}
+  .key.wide{font-family:var(--font-body);font-size:13px;color:var(--text-dim);}
+  .item-row{margin-bottom:16px;}
+  .item-row label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;}
+  .item-row .unit{color:var(--text-dim);font-size:12px;}
+  .num-input{
+    width:100%;padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);
+    background:var(--bg-input);color:var(--text);font-family:var(--font-display);font-size:26px;
+    letter-spacing:1px;
+  }
+  .num-input:focus{outline:none;border-color:var(--accent);}
+  .banner{padding:12px 14px;border-radius:10px;font-size:13px;margin-bottom:14px;}
+  .banner.error{background:rgba(192,57,43,0.15);color:#E07A6E;border:1px solid rgba(192,57,43,0.3);}
+  .banner.success{background:rgba(43,168,154,0.15);color:#5FD6C6;border:1px solid rgba(43,168,154,0.3);}
+  .tabs{display:flex;gap:8px;margin-bottom:18px;}
+  .tab{
+    flex:1;padding:10px;text-align:center;border-radius:10px;border:1px solid rgba(255,255,255,0.1);
+    font-size:13px;font-weight:700;cursor:pointer;color:var(--text-dim);
+  }
+  .tab.active{background:var(--accent);color:#1C1F26;border-color:var(--accent);}
+  .track-row{margin-bottom:22px;}
+  .track-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .track-head .gname{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;}
+  .track-head .rank{font-family:var(--font-display);font-size:13px;color:var(--gold);}
+  .track-head .score{font-family:var(--font-display);font-size:20px;color:var(--text);}
+  .track{
+    position:relative;height:34px;border-radius:100px;
+    background:repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 22px), var(--bg-input);
+    overflow:hidden;border:1px solid rgba(255,255,255,0.08);
+  }
+  .track-fill{
+    position:absolute;left:0;top:0;bottom:0;border-radius:100px;
+    transition:width 0.8s cubic-bezier(.2,.8,.2,1);
+  }
+  .track-runner{
+    position:absolute;top:50%;transform:translate(-50%,-50%);font-size:18px;transition:left 0.8s cubic-bezier(.2,.8,.2,1);
+  }
+  .flag{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:14px;opacity:0.6;}
+  .empty-state{text-align:center;padding:40px 10px;color:var(--text-dim);}
+  .empty-state .big-emoji{font-size:36px;margin-bottom:10px;}
+  .divider{height:1px;background:rgba(255,255,255,0.08);margin:18px 0;}
+  .status-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .status-chip{font-size:12px;padding:6px 10px;border-radius:100px;display:flex;align-items:center;gap:5px;}
+  .status-chip.done{background:rgba(43,168,154,0.15);color:#5FD6C6;}
+  .status-chip.pending{background:rgba(255,255,255,0.06);color:var(--text-dim);}
+  .refresh-note{text-align:center;font-size:11px;color:var(--gray);margin-top:6px;}
+  .link-btn{background:none;border:none;color:var(--text-dim);font-size:12px;text-decoration:underline;cursor:pointer;padding:0;margin-top:4px;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+/* ---------- Firebase setup (loaded dynamically so this stays a classic script) ---------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyCL_qiL5vlwJg_XFCD2f162GsTrsDhX6b0",
+  authDomain: "mm-team-90days.firebaseapp.com",
+  projectId: "mm-team-90days",
+  storageBucket: "mm-team-90days.firebasestorage.app",
+  messagingSenderId: "464972539123",
+  appId: "1:464972539123:web:3768436c9e57fe4ef10386"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const dataDocRef = db.collection('mm90').doc('appData');
+
+/* ---------- storage helpers ---------- */
+const todayStr = () => {
+  const d = new Date();
+  const off = d.getTimezoneOffset();
+  return new Date(d.getTime() - off*60000).toISOString().slice(0,10);
+};
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+
+function defaultData(){
+  return {
+    adminPin: '9000',
+    startDate: todayStr(),
+    coaches: [],
+    students: [],
+    items: [],
+    records: []
+  };
+}
+
+async function loadData(){
+  try{
+    const snap = await dataDocRef.get();
+    if(snap.exists) return snap.data();
+    const d = defaultData();
+    await dataDocRef.set(d);
+    return d;
+  }catch(e){
+    console.error('loadData error', e);
+    return defaultData();
+  }
+}
+
+async function saveData(data){
+  try{
+    await dataDocRef.set(data);
+    return true;
+  }catch(e){
+    console.error('saveData error', e);
+    return false;
+  }
+}
+
+/* ---------- state ---------- */
+let state = {
+  view: 'home',
+  data: null,
+  loading: true,
+  error: '',
+  success: '',
+  session: null, // {role:'admin'|'coach'|'student', id}
+  pinBuffer: '',
+  studentFlow: { coachId: null, studentId: null },
+  overviewTab: 'today',
+  loginError: ''
+};
+
+function setState(patch){
+  state = { ...state, ...patch };
+  render();
+}
+
+let firstSnapshot = true;
+function boot(){
+  dataDocRef.onSnapshot(async (snap)=>{
+    if(!snap.exists){
+      if(firstSnapshot){
+        const d = defaultData();
+        await dataDocRef.set(d);
+      }
+      return;
+    }
+    const fresh = snap.data();
+    if(firstSnapshot){
+      firstSnapshot = false;
+      setState({ data: fresh, loading:false });
+    }else{
+      // avoid clobbering an open form on data-entry screens; still keep data fresh in background
+      state.data = fresh;
+      if(['overview','home','coach','admin'].includes(state.view)) render();
+    }
+  }, (err)=>{
+    console.error('onSnapshot error', err);
+    if(firstSnapshot){
+      firstSnapshot = false;
+      setState({ data: defaultData(), loading:false, error:'連唔到Firebase,請檢查網絡或設定 (F12 睇Console)' });
+    }
+  });
+}
+
+/* ---------- derived helpers ---------- */
+function dayNumber(data){
+  const start = new Date(data.startDate + 'T00:00:00');
+  const now = new Date(todayStr() + 'T00:00:00');
+  const diff = Math.floor((now-start)/86400000) + 1;
+  return Math.max(1, Math.min(90, diff));
+}
+function coachById(id){ return state.data.coaches.find(c=>c.id===id); }
+function studentById(id){ return state.data.students.find(s=>s.id===id); }
+function studentsOfCoach(coachId){ return state.data.students.filter(s=>s.coachId===coachId); }
+function itemsOfCoach(coachId){ return state.data.items.filter(i=>i.coachId===coachId); }
+function groupTotal(coachId, onlyToday){
+  const ids = studentsOfCoach(coachId).map(s=>s.id);
+  return state.data.records
+    .filter(r => ids.includes(r.studentId) && (!onlyToday || r.date === todayStr()))
+    .reduce((sum,r)=> sum + (Number(r.value)||0), 0);
+}
+
+/* ---------- actions ---------- */
+function goto(view, extra={}){ setState({ view, error:'', success:'', ...extra }); }
+function logout(){ setState({ session:null, view:'home', pinBuffer:'', studentFlow:{coachId:null,studentId:null} }); }
+
+async function adminLogin(){
+  const pin = document.getElementById('adminPinInput').value.trim();
+  if(pin === state.data.adminPin){
+    setState({ session:{role:'admin'}, view:'admin', loginError:'' });
+  }else{
+    setState({ loginError:'PIN 唔啱,請再試' });
+  }
+}
+
+async function coachLogin(){
+  const coachId = document.getElementById('coachSelectInput').value;
+  const pw = document.getElementById('coachPwInput').value;
+  const coach = coachById(coachId);
+  if(coach && coach.password === pw){
+    setState({ session:{role:'coach', id:coach.id}, view:'coach', loginError:'' });
+  }else{
+    setState({ loginError:'教練或密碼唔啱,請再試' });
+  }
+}
+
+async function addCoach(){
+  const name = document.getElementById('newCoachName').value.trim();
+  const groupName = document.getElementById('newCoachGroup').value.trim();
+  const pw = document.getElementById('newCoachPw').value.trim();
+  if(!name || !groupName || !pw){ setState({ error:'請填晒教練名、組名同密碼' }); return; }
+  const data = { ...state.data };
+  data.coaches = [...data.coaches, { id:uid(), name, groupName, password:pw }];
+  const ok = await saveData(data);
+  if(ok) setState({ data, success:`已新增教練「${name}」`, error:'' });
+  else setState({ error:'儲存失敗,請再試' });
+}
+
+async function deleteCoach(id){
+  const data = { ...state.data };
+  const studentIds = data.students.filter(s=>s.coachId===id).map(s=>s.id);
+  data.coaches = data.coaches.filter(c=>c.id!==id);
+  data.students = data.students.filter(s=>s.coachId!==id);
+  data.items = data.items.filter(i=>i.coachId!==id);
+  data.records = data.records.filter(r=>!studentIds.includes(r.studentId));
+  const ok = await saveData(data);
+  if(ok) setState({ data, confirmDelete:null });
+}
+
+async function updateSettings(){
+  const startDate = document.getElementById('settingsStartDate').value;
+  const newPin = document.getElementById('settingsAdminPin').value.trim();
+  const data = { ...state.data };
+  if(startDate) data.startDate = startDate;
+  if(newPin) data.adminPin = newPin;
+  const ok = await saveData(data);
+  if(ok) setState({ data, success:'設定已更新' });
+}
+
+async function addStudent(){
+  const coachId = state.session.id;
+  const name = document.getElementById('newStudentName').value.trim();
+  let pin = document.getElementById('newStudentPin').value.trim();
+  if(!name){ setState({ error:'請輸入學員姓名' }); return; }
+  if(!/^\d{4}$/.test(pin)){ setState({ error:'PIN 要係4位數字' }); return; }
+  const data = { ...state.data };
+  data.students = [...data.students, { id:uid(), name, pin, coachId }];
+  const ok = await saveData(data);
+  if(ok) setState({ data, success:`已新增學員「${name}」`, error:'' });
+  else setState({ error:'儲存失敗,請再試' });
+}
+
+async function deleteStudent(id){
+  const data = { ...state.data };
+  data.students = data.students.filter(s=>s.id!==id);
+  data.records = data.records.filter(r=>r.studentId!==id);
+  const ok = await saveData(data);
+  if(ok) setState({ data });
+}
+
+async function addItem(){
+  const coachId = state.session.id;
+  const name = document.getElementById('newItemName').value.trim();
+  const unit = document.getElementById('newItemUnit').value.trim();
+  if(!name){ setState({ error:'請輸入項目名稱' }); return; }
+  const data = { ...state.data };
+  data.items = [...data.items, { id:uid(), name, unit: unit||'次', coachId }];
+  const ok = await saveData(data);
+  if(ok) setState({ data, success:`已新增項目「${name}」`, error:'' });
+  else setState({ error:'儲存失敗,請再試' });
+}
+
+async function deleteItem(id){
+  const data = { ...state.data };
+  data.items = data.items.filter(i=>i.id!==id);
+  data.records = data.records.filter(r=>r.itemId!==id);
+  const ok = await saveData(data);
+  if(ok) setState({ data });
+}
+
+function pinPress(digit){
+  if(state.pinBuffer.length>=4) return;
+  const buf = state.pinBuffer + digit;
+  setState({ pinBuffer: buf });
+  if(buf.length===4) checkStudentPin(buf);
+}
+function pinBackspace(){ setState({ pinBuffer: state.pinBuffer.slice(0,-1) }); }
+
+function checkStudentPin(buf){
+  const student = studentById(state.studentFlow.studentId);
+  if(student && student.pin === buf){
+    setState({ session:{role:'student', id:student.id}, view:'student-report', pinBuffer:'', loginError:'' });
+  }else{
+    setTimeout(()=> setState({ pinBuffer:'', loginError:'PIN 唔啱,請再試' }), 250);
+  }
+}
+
+async function submitReport(){
+  const student = studentById(state.session.id);
+  const items = itemsOfCoach(student.coachId);
+  const data = { ...state.data };
+  const today = todayStr();
+  items.forEach(item=>{
+    const el = document.getElementById('qty-'+item.id);
+    if(!el) return;
+    const val = el.value === '' ? null : Number(el.value);
+    if(val === null || isNaN(val)) return;
+    const existing = data.records.find(r=>r.studentId===student.id && r.itemId===item.id && r.date===today);
+    if(existing){ existing.value = val; }
+    else { data.records.push({ id:uid(), date:today, studentId:student.id, itemId:item.id, value:val }); }
+  });
+  const ok = await saveData(data);
+  if(ok) setState({ data, success:'今日數字已提交!' });
+  else setState({ error:'儲存失敗,請再試' });
+}
+
+/* ---------- render ---------- */
+function render(){
+  const root = document.getElementById('root');
+  if(state.loading){
+    root.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:var(--text-dim);font-family:var(--font-display);font-size:20px;">載入緊…</div>`;
+    return;
+  }
+  const day = dayNumber(state.data);
+  root.innerHTML = `
+    <div class="topbar">
+      <div class="brand" onclick="goto('home')">
+        <div class="top">MM TEAM</div>
+        <div class="sub">90日教練學堂</div>
+      </div>
+      <div class="navwrap">
+        <div class="day-pill">DAY ${day}/90</div>
+      </div>
+    </div>
+    <main>
+      ${renderSubNav()}
+      ${renderView()}
+    </main>
+  `;
+  attachDynamicHandlers();
+}
+
+function renderSubNav(){
+  if(state.view==='home') return '';
+  const showLogout = !!state.session;
+  return `
+    <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
+      <button class="navlink ${state.view==='overview'?'active':''}" onclick="goto('overview')">📊 總覽排行榜</button>
+      ${showLogout ? `<button class="navlink" onclick="logout()">登出</button>` : `<button class="navlink" onclick="goto('home')">返回主頁</button>`}
+    </div>
+  `;
+}
+
+function renderView(){
+  switch(state.view){
+    case 'home': return viewHome();
+    case 'admin-login': return viewAdminLogin();
+    case 'admin': return viewAdmin();
+    case 'coach-login': return viewCoachLogin();
+    case 'coach': return viewCoach();
+    case 'student-pick-group': return viewStudentPickGroup();
+    case 'student-pick-name': return viewStudentPickName();
+    case 'student-pin': return viewStudentPin();
+    case 'student-report': return viewStudentReport();
+    case 'overview': return viewOverview();
+    default: return viewHome();
+  }
+}
+
+function viewHome(){
+  return `
+    <h1 class="page-title">你係邊個角色?</h1>
+    <p class="helper">揀返你嘅身份登入,開始今日嘅衝刺。</p>
+    <div class="role-grid">
+      <div class="role-btn" onclick="goto('admin-login')">
+        <div class="emoji">🛡️</div>
+        <div><div class="label">Admin</div><div class="desc">管理教練名單同活動設定</div></div>
+      </div>
+      <div class="role-btn" onclick="goto('coach-login')">
+        <div class="emoji">🧭</div>
+        <div><div class="label">教練 / 組長</div><div class="desc">管理組員同每日行動項目</div></div>
+      </div>
+      <div class="role-btn" onclick="goto('student-pick-group')">
+        <div class="emoji">🏃</div>
+        <div><div class="label">學員</div><div class="desc">填報今日行動數字</div></div>
+      </div>
+      <div class="role-btn" onclick="goto('overview')">
+        <div class="emoji">🏁</div>
+        <div><div class="label">睇總覽排行榜</div><div class="desc">唔使登入都睇到</div></div>
+      </div>
+    </div>
+  `;
+}
+
+function viewAdminLogin(){
+  return `
+    <h1 class="page-title">Admin 登入</h1>
+    ${state.loginError ? `<div class="banner error">${state.loginError}</div>` : ''}
+    <div class="card">
+      <div class="field">
+        <label>Admin PIN</label>
+        <input class="input" id="adminPinInput" type="password" inputmode="numeric" placeholder="輸入 PIN">
+      </div>
+      <button class="btn btn-primary" onclick="adminLogin()">登入</button>
+    </div>
+  `;
+}
+
+function viewCoachLogin(){
+  const coaches = state.data.coaches;
+  if(coaches.length===0){
+    return `<div class="empty-state"><div class="big-emoji">🧭</div>暫時未有教練帳號,<br>請聯絡 Admin 新增。</div>`;
+  }
+  return `
+    <h1 class="page-title">教練登入</h1>
+    ${state.loginError ? `<div class="banner error">${state.loginError}</div>` : ''}
+    <div class="card">
+      <div class="field">
+        <label>揀返你自己</label>
+        <select class="input" id="coachSelectInput">
+          ${coaches.map(c=>`<option value="${c.id}">${c.name}（${c.groupName}）</option>`).join('')}
+        </select>
+      </div>
+      <div class="field">
+        <label>密碼</label>
+        <input class="input" id="coachPwInput" type="password" placeholder="輸入密碼">
+      </div>
+      <button class="btn btn-primary" onclick="coachLogin()">登入</button>
+    </div>
+  `;
+}
+
+function viewAdmin(){
+  const d = state.data;
+  return `
+    <h1 class="page-title">Admin 後台</h1>
+    ${state.error?`<div class="banner error">${state.error}</div>`:''}
+    ${state.success?`<div class="banner success">${state.success}</div>`:''}
+
+    <div class="card">
+      <h2 class="section-title">活動設定</h2>
+      <div class="field">
+        <label>90日開始日期</label>
+        <input class="input" id="settingsStartDate" type="date" value="${d.startDate}">
+      </div>
+      <div class="field">
+        <label>更改 Admin PIN（留空即唔改）</label>
+        <input class="input" id="settingsAdminPin" type="text" inputmode="numeric" placeholder="新 PIN">
+      </div>
+      <button class="btn btn-outline" onclick="updateSettings()">儲存設定</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">新增教練</h2>
+      <div class="field"><label>教練姓名</label><input class="input" id="newCoachName" placeholder="例:陳教練"></div>
+      <div class="field"><label>組名</label><input class="input" id="newCoachGroup" placeholder="例:烈焰組"></div>
+      <div class="field"><label>登入密碼</label><input class="input" id="newCoachPw" type="text" placeholder="設定密碼"></div>
+      <button class="btn btn-primary" onclick="addCoach()">新增教練</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">教練名單（${d.coaches.length}）</h2>
+      ${d.coaches.length===0 ? `<div class="empty-state">未有教練,喺上面新增第一個啦。</div>` :
+        d.coaches.map(c=>`
+          <div class="list-item">
+            <div>
+              <div class="name">${c.name} <span class="pill-small">${c.groupName}</span></div>
+              <div class="meta">${studentsOfCoach(c.id).length} 位學員 · ${itemsOfCoach(c.id).length} 個項目</div>
+            </div>
+            <button class="icon-btn danger" onclick="if(confirm('確定刪除教練「${c.name}」？佢嘅組員同紀錄都會一齊刪除。')) deleteCoach('${c.id}')">刪除</button>
+          </div>
+        `).join('')
+      }
+    </div>
+  `;
+}
+
+function viewCoach(){
+  const coach = coachById(state.session.id);
+  if(!coach){ return `<div class="empty-state">搵唔到呢個教練帳號。</div>`; }
+  const students = studentsOfCoach(coach.id);
+  const items = itemsOfCoach(coach.id);
+  const today = todayStr();
+  return `
+    <h1 class="page-title">${coach.groupName}</h1>
+    <p class="helper">教練：${coach.name}</p>
+    ${state.error?`<div class="banner error">${state.error}</div>`:''}
+    ${state.success?`<div class="banner success">${state.success}</div>`:''}
+
+    <div class="card">
+      <h2 class="section-title">今日填報狀況</h2>
+      ${students.length===0 ? `<p class="helper">未有學員。</p>` : `
+        <div class="status-grid">
+          ${students.map(s=>{
+            const done = state.data.records.some(r=>r.studentId===s.id && r.date===today);
+            return `<div class="status-chip ${done?'done':'pending'}">${done?'✅':'⏳'} ${s.name}</div>`;
+          }).join('')}
+        </div>
+      `}
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">學員管理（${students.length}）</h2>
+      ${students.map(s=>`
+        <div class="list-item">
+          <div>
+            <div class="name">${s.name}</div>
+            <div class="meta">PIN: ${s.pin}</div>
+          </div>
+          <button class="icon-btn danger" onclick="if(confirm('確定刪除學員「${s.name}」？')) deleteStudent('${s.id}')">刪除</button>
+        </div>
+      `).join('')}
+      <div class="divider"></div>
+      <div class="field"><label>學員姓名</label><input class="input" id="newStudentName" placeholder="例:黃小明"></div>
+      <div class="field"><label>4位數字 PIN</label><input class="input" id="newStudentPin" inputmode="numeric" maxlength="4" placeholder="例:1234"></div>
+      <button class="btn btn-primary" onclick="addStudent()">新增學員</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">每日行動項目（${items.length}）</h2>
+      ${items.map(i=>`
+        <div class="list-item">
+          <div><div class="name">${i.name}</div><div class="meta">單位：${i.unit}</div></div>
+          <button class="icon-btn danger" onclick="if(confirm('確定刪除項目「${i.name}」？')) deleteItem('${i.id}')">刪除</button>
+        </div>
+      `).join('')}
+      <div class="divider"></div>
+      <div class="field"><label>項目名稱</label><input class="input" id="newItemName" placeholder="例:致電客戶"></div>
+      <div class="field"><label>單位</label><input class="input" id="newItemUnit" placeholder="例:次 / 分鐘 / 元"></div>
+      <button class="btn btn-primary" onclick="addItem()">新增項目</button>
+    </div>
+  `;
+}
+
+function viewStudentPickGroup(){
+  const coaches = state.data.coaches;
+  if(coaches.length===0){
+    return `<div class="empty-state"><div class="big-emoji">🏃</div>暫時未有任何組別,<br>請聯絡教練或 Admin。</div>`;
+  }
+  return `
+    <h1 class="page-title">揀返你嘅組</h1>
+    <div class="name-grid">
+      ${coaches.map(c=>`<div class="name-tile" onclick="goto('student-pick-name',{studentFlow:{coachId:'${c.id}',studentId:null}})">${c.groupName}</div>`).join('')}
+    </div>
+  `;
+}
+
+function viewStudentPickName(){
+  const students = studentsOfCoach(state.studentFlow.coachId);
+  const coach = coachById(state.studentFlow.coachId);
+  if(students.length===0){
+    return `<div class="empty-state">「${coach?coach.groupName:''}」暫時未有學員,<br>請聯絡教練新增。</div>`;
+  }
+  return `
+    <h1 class="page-title">揀返你個名</h1>
+    <p class="helper">${coach.groupName}</p>
+    <div class="name-grid">
+      ${students.map(s=>`<div class="name-tile" onclick="goto('student-pin',{studentFlow:{...state.studentFlow,studentId:'${s.id}'},pinBuffer:''})">${s.name}</div>`).join('')}
+    </div>
+    <button class="link-btn" style="margin-top:18px;" onclick="goto('student-pick-group')">← 返上一步揀組</button>
+  `;
+}
+
+function viewStudentPin(){
+  const student = studentById(state.studentFlow.studentId);
+  const dots = [0,1,2,3].map(i=>`<div class="pin-dot ${state.pinBuffer.length>i?'filled':''}"></div>`).join('');
+  return `
+    <h1 class="page-title">你好,${student?student.name:''}</h1>
+    <p class="helper">請輸入你嘅4位數字 PIN</p>
+    ${state.loginError ? `<div class="banner error">${state.loginError}</div>` : ''}
+    <div class="pin-display">${dots}</div>
+    <div class="keypad">
+      ${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="key" onclick="pinPress('${n}')">${n}</div>`).join('')}
+      <div class="key wide" onclick="goto('student-pick-name')">返回</div>
+      <div class="key" onclick="pinPress('0')">0</div>
+      <div class="key wide" onclick="pinBackspace()">⌫</div>
+    </div>
+  `;
+}
+
+function viewStudentReport(){
+  const student = studentById(state.session.id);
+  const items = itemsOfCoach(student.coachId);
+  const today = todayStr();
+  return `
+    <h1 class="page-title">${student.name},今日點衝刺?</h1>
+    <p class="helper">${coachById(student.coachId).groupName} · ${today}</p>
+    ${state.error?`<div class="banner error">${state.error}</div>`:''}
+    ${state.success?`<div class="banner success">${state.success}</div>`:''}
+    <div class="card">
+      ${items.length===0 ? `<p class="helper">教練未加行動項目,請聯絡教練。</p>` : items.map(item=>{
+        const existing = state.data.records.find(r=>r.studentId===student.id && r.itemId===item.id && r.date===today);
+        return `
+          <div class="item-row">
+            <label><span>${item.name}</span><span class="unit">單位：${item.unit}</span></label>
+            <input class="num-input" id="qty-${item.id}" type="number" min="0" inputmode="numeric" placeholder="0" value="${existing?existing.value:''}">
+          </div>
+        `;
+      }).join('')}
+      ${items.length>0 ? `<button class="btn btn-primary" onclick="submitReport()">提交今日數字</button>` : ''}
+    </div>
+  `;
+}
+
+function viewOverview(){
+  const d = state.data;
+  const coaches = d.coaches;
+  const tab = state.overviewTab;
+  if(coaches.length===0){
+    return `<div class="empty-state"><div class="big-emoji">🏁</div>暫時未有組別數據。</div>`;
+  }
+  const rows = coaches.map(c=>({
+    coach:c,
+    score: groupTotal(c.id, tab==='today')
+  })).sort((a,b)=>b.score-a.score);
+  const maxScore = Math.max(1, ...rows.map(r=>r.score));
+  const palette = ['#E8622C','#2BA89A','#D4A73D','#6B7280','#8E5FE8','#4E8FE8'];
+  return `
+    <h1 class="page-title">總覽排行榜</h1>
+    <div class="tabs">
+      <div class="tab ${tab==='today'?'active':''}" onclick="setState({overviewTab:'today'})">今日</div>
+      <div class="tab ${tab==='cumulative'?'active':''}" onclick="setState({overviewTab:'cumulative'})">累計 (90日)</div>
+    </div>
+    <div class="card">
+      ${rows.map((r,idx)=>{
+        const pct = Math.max(4, Math.round((r.score/maxScore)*92));
+        const color = palette[idx % palette.length];
+        return `
+          <div class="track-row">
+            <div class="track-head">
+              <div class="gname">${idx===0?'🥇':idx===1?'🥈':idx===2?'🥉':'　'} ${r.coach.groupName}
+                <span class="pill-small">${r.coach.name}</span>
+              </div>
+              <div class="score">${r.score}</div>
+            </div>
+            <div class="track">
+              <div class="track-fill" style="width:${pct}%;background:${color}22;border-right:2px solid ${color};"></div>
+              <div class="track-runner" style="left:${pct}%;">🏃</div>
+              <div class="flag">🏁</div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    <div class="refresh-note">數據即時同步 · <span onclick="(async()=>{const fresh=await loadData();state.data=fresh;render();})()" style="text-decoration:underline;cursor:pointer;">立即重新整理</span></div>
+  `;
+}
+
+function attachDynamicHandlers(){
+  // enter-key submit convenience for a couple of key inputs
+  const map = [
+    ['adminPinInput','adminLogin'],
+    ['coachPwInput','coachLogin'],
+  ];
+  map.forEach(([id,fn])=>{
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('keydown', e=>{ if(e.key==='Enter') window[fn](); });
+  });
+}
+
+boot();
+</script>
+</body>
+</html>
