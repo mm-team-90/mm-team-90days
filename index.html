@@ -26,6 +26,8 @@
   html, body { margin: 0; padding: 0; background: #fdf8ef; }
   body { font-family: 'Noto Sans HK', 'PingFang HK', -apple-system, sans-serif; }
   input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5) sepia(0.3); }
+  input[type="date"] { min-width: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; width: 100%; }
   ::placeholder { color: #c4b8a0; }
   #root { min-height: 100vh; }
   button { font-family: inherit; }
@@ -1074,7 +1076,7 @@ function SettingsTab({ products, costs, orders, purchases, showToast }) {
    styles
    ========================================================= */
 const styles = {
-  app: { fontFamily: "inherit", background: "#fdf8ef", minHeight: "100vh", maxWidth: 480, margin: "0 auto", display: "flex", flexDirection: "column", color: "#3a3327" },
+  app: { fontFamily: "inherit", background: "#fdf8ef", minHeight: "100vh", maxWidth: 480, margin: "0 auto", display: "flex", flexDirection: "column", color: "#3a3327", overflowX: "hidden", width: "100%" },
   loadingMark: { fontSize: 26, fontWeight: 800, color: "#d9f0e2", background: "linear-gradient(155deg, #1f3a2c 0%, #0f1c15 100%)", borderRadius: 14, width: 56, height: 56, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "monospace" },
   header: { display: "flex", alignItems: "center", gap: 12, padding: "16px 18px 12px", borderBottom: "1px solid #ece3d0", background: "#fdf8ef", position: "sticky", top: 0, zIndex: 5 },
   headerStamp: { width: 38, height: 38, borderRadius: 10, background: "linear-gradient(155deg, #1f3a2c 0%, #0f1c15 100%)", color: "#d9f0e2", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 18, fontFamily: "monospace", flexShrink: 0 },
