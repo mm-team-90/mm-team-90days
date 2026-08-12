@@ -287,7 +287,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v9</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v10</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
@@ -792,9 +792,29 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
   const [period, setPeriod] = useState("month");
   const [expandedKey, setExpandedKey] = useState(null);
   const [projTierIdx, setProjTierIdx] = useState(0);
+  const [useCustomRange, setUseCustomRange] = useState(false);
+  const [rangeStart, setRangeStart] = useState(todayStr());
+  const [rangeEnd, setRangeEnd] = useState(todayStr());
 
   const activeOrders = useMemo(() => orders.filter((o) => o.status !== "cancelled"), [orders]);
 
+  // scope = which orders/purchases count toward the top summary cards, category summary, realized profit
+  const inScope = useCallback((dateStr) => {
+    if (useCustomRange) return dateStr >= rangeStart && dateStr <= rangeEnd;
+    const today = todayStr();
+    if (period === "day") return dateStr === today;
+    if (period === "week") return getWeekKey(dateStr) === getWeekKey(today);
+    return dateStr.slice(0, 7) === today.slice(0, 7);
+  }, [useCustomRange, rangeStart, rangeEnd, period]);
+
+  const scopedOrders = useMemo(() => activeOrders.filter((o) => inScope(o.date)), [activeOrders, inScope]);
+  const scopedPurchases = useMemo(() => purchases.filter((p) => inScope(p.date)), [purchases, inScope]);
+
+  const scopeLabel = useCustomRange
+    ? (rangeStart === rangeEnd ? rangeStart : `${rangeStart} 至 ${rangeEnd}`)
+    : { day: "今日", week: "本星期", month: "本月" }[period];
+
+  // full history, grouped by day/week/month — for browsing past periods (unaffected by scope above)
   const groups = useMemo(() => {
     const map = new Map();
     const put = (dateStr, amount, kind, ref) => {
@@ -812,11 +832,16 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
     return Array.from(map.values()).sort((a, b) => (a.key < b.key ? 1 : -1));
   }, [activeOrders, purchases, period, isAdmin]);
 
-  const totals = useMemo(() => { const t = { in: 0, out: 0 }; groups.forEach((g) => { t.in += g.in; t.out += g.out; }); return t; }, [groups]);
+  const totals = useMemo(() => {
+    const t = { in: 0, out: 0 };
+    scopedOrders.forEach((o) => { t.out += o.total; });
+    if (isAdmin) scopedPurchases.forEach((p) => { t.in += p.total; });
+    return t;
+  }, [scopedOrders, scopedPurchases, isAdmin]);
 
   const categorySummary = useMemo(() => {
     const map = new Map();
-    activeOrders.forEach((o) => (o.items || []).forEach((it) => {
+    scopedOrders.forEach((o) => (o.items || []).forEach((it) => {
       const prod = products.find((p) => p.id === it.productId);
       const cat = prod?.category || "未分類";
       if (!map.has(cat)) map.set(cat, { cat, qty: 0, revenue: 0, cost: 0 });
@@ -826,14 +851,14 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
       if (isAdmin) g.cost += (costs[it.productId] || 0) * it.qty;
     }));
     return Array.from(map.values()).sort((a, b) => b.revenue - a.revenue);
-  }, [activeOrders, products, costs, isAdmin]);
+  }, [scopedOrders, products, costs, isAdmin]);
 
   const realizedProfit = useMemo(() => {
     if (!isAdmin) return 0;
     let p = 0;
-    activeOrders.forEach((o) => (o.items || []).forEach((it) => { p += (it.unitPrice - (costs[it.productId] || 0)) * it.qty; }));
+    scopedOrders.forEach((o) => (o.items || []).forEach((it) => { p += (it.unitPrice - (costs[it.productId] || 0)) * it.qty; }));
     return p;
-  }, [activeOrders, costs, isAdmin]);
+  }, [scopedOrders, costs, isAdmin]);
 
   const todayStaffSummary = useMemo(() => {
     if (!isAdmin) return [];
@@ -866,9 +891,25 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
     <div style={styles.tabContent}>
       <div style={styles.periodToggle}>
         {["day", "week", "month"].map((p) => (
-          <button key={p} onClick={() => setPeriod(p)} style={{ ...styles.periodBtn, background: period === p ? "#16261f" : "transparent", color: period === p ? "#fdf8ef" : "#7a6f5c" }}>每{periodLabel[p]}</button>
+          <button key={p} onClick={() => { setPeriod(p); setUseCustomRange(false); }} style={{ ...styles.periodBtn, background: !useCustomRange && period === p ? "#16261f" : "transparent", color: !useCustomRange && period === p ? "#fdf8ef" : "#7a6f5c" }}>每{periodLabel[p]}</button>
         ))}
+        <button onClick={() => { setUseCustomRange(true); }} style={{ ...styles.periodBtn, background: useCustomRange ? "#16261f" : "transparent", color: useCustomRange ? "#fdf8ef" : "#7a6f5c" }}>自訂</button>
       </div>
+
+      {useCustomRange && (
+        <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <label style={styles.label}>開始日期</label>
+            <input style={styles.input} type="date" value={rangeStart} onChange={(e) => setRangeStart(e.target.value)} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <label style={styles.label}>結束日期</label>
+            <input style={styles.input} type="date" value={rangeEnd} onChange={(e) => setRangeEnd(e.target.value)} />
+          </div>
+        </div>
+      )}
+
+      <div style={{ fontSize: 11, color: "#a89b86", marginBottom: 10 }}>以下數字統計範圍：{scopeLabel}</div>
 
       <div style={styles.summaryGrid}>
         {isAdmin && <div style={{ ...styles.summaryCard, borderColor: "#d6dcd3" }}><div style={styles.summaryLabel}>總入貨</div><div style={{ ...styles.summaryValue, color: "#16261f" }}>${fmt(totals.in)}</div></div>}
@@ -910,7 +951,7 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
         </div>
       )}
 
-      <div style={styles.sectionTitle}>產品分類總結</div>
+      <div style={styles.sectionTitle}>產品分類總結（{scopeLabel}）</div>
       {categorySummary.length === 0 && <div style={styles.emptyHint}>未有銷售資料</div>}
       {categorySummary.map((c) => (
         <div key={c.cat} style={styles.catRow}>
@@ -922,7 +963,7 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
         </div>
       ))}
 
-      <div style={{ ...styles.sectionTitle, marginTop: 22 }}>{periodLabel[period]}明細</div>
+      <div style={{ ...styles.sectionTitle, marginTop: 22 }}>歷史記錄（按{periodLabel[period]}分組，可撳開任何一期）</div>
       {groups.length === 0 && <div style={styles.emptyHint}>未有資料</div>}
       {groups.map((g) => {
         const expanded = expandedKey === g.key;
