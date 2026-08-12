@@ -26,7 +26,7 @@
   html, body { margin: 0; padding: 0; background: #fdf8ef; }
   body { font-family: 'Noto Sans HK', 'PingFang HK', -apple-system, sans-serif; }
   input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.55; background: transparent; padding: 0; margin: 0; }
-  input[type="date"] { min-width: 0; box-sizing: border-box; }
+  input[type="date"] { min-width: 0; box-sizing: border-box; -webkit-appearance: none; appearance: none; }
   html, body { overflow-x: hidden; width: 100%; }
   ::placeholder { color: #c4b8a0; }
   #root { min-height: 100vh; }
@@ -78,7 +78,7 @@ const DEFAULT_TIERS = [
   { id: "t2", label: "75折", value: 0 },
   { id: "t3", label: "65折", value: 0 },
 ];
-const LOW_STOCK_THRESHOLD = 5;
+const DEFAULT_LOW_STOCK_THRESHOLD = 5;
 
 /* tiny inline icons */
 const Icon = ({ children, size = 16, color = "currentColor", style }) => (
@@ -203,6 +203,16 @@ function App({ user, role }) {
   const [costs, setCosts] = useState({}); // productId -> cost, admin only
   const [orders, setOrders] = useState([]);
   const [purchases, setPurchases] = useState([]);
+  const [lowStockThreshold, setLowStockThreshold] = useState(DEFAULT_LOW_STOCK_THRESHOLD);
+
+  useEffect(() => {
+    const unsub = db.collection("settings").doc("global").onSnapshot((snap) => {
+      if (snap.exists && typeof snap.data().lowStockThreshold === "number") {
+        setLowStockThreshold(snap.data().lowStockThreshold);
+      }
+    }, () => {});
+    return unsub;
+  }, []);
 
   useEffect(() => {
     const unsub = db.collection("products").onSnapshot((snap) => {
@@ -259,11 +269,11 @@ function App({ user, role }) {
     <div style={styles.app}>
       <Header role={role} user={user} />
       <div style={styles.body}>
-        {tab === "order" && <OrderTab products={products} orders={orders} isAdmin={isAdmin} role={role} user={user} showToast={showToast} />}
+        {tab === "order" && <OrderTab products={products} orders={orders} isAdmin={isAdmin} role={role} user={user} showToast={showToast} lowStockThreshold={lowStockThreshold} />}
         {tab === "purchase" && isAdmin && <PurchaseTab products={products} costs={costs} purchases={purchases} showToast={showToast} />}
-        {tab === "products" && <ProductsTab products={products} costs={costs} isAdmin={isAdmin} showToast={showToast} />}
+        {tab === "products" && <ProductsTab products={products} costs={costs} isAdmin={isAdmin} showToast={showToast} lowStockThreshold={lowStockThreshold} />}
         {tab === "stats" && <StatsTab orders={orders} purchases={purchases} products={products} costs={costs} isAdmin={isAdmin} />}
-        {tab === "settings" && isAdmin && <SettingsTab products={products} costs={costs} orders={orders} purchases={purchases} showToast={showToast} />}
+        {tab === "settings" && isAdmin && <SettingsTab products={products} costs={costs} orders={orders} purchases={purchases} showToast={showToast} lowStockThreshold={lowStockThreshold} />}
       </div>
       <NavBar tab={tab} setTab={setTab} tabs={tabs} />
       {toast && <div style={styles.toast}>{toast}</div>}
@@ -277,7 +287,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v8</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v9</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
@@ -304,7 +314,7 @@ function NavBar({ tab, setTab, tabs }) {
 /* =========================================================
    ORDER TAB — 開單 (multi-item cart, stock aware)
    ========================================================= */
-function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
+function OrderTab({ products, orders, isAdmin, role, user, showToast, lowStockThreshold }) {
   const [cart, setCart] = useState([]); // {productId, productName, tierId, tierLabel, unitPrice, qty}
   const [note, setNote] = useState("");
   const [date, setDate] = useState(todayStr());
@@ -428,7 +438,7 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
       <div style={styles.card}>
         <label style={styles.label}>加產品</label>
         <select style={styles.select} value={pickerProductId} onChange={(e) => setPickerProductId(e.target.value)}>
-          {products.map((p) => <option key={p.id} value={p.id}>{p.name}（存{p.stock ?? 0}{(p.stock ?? 0) <= LOW_STOCK_THRESHOLD ? " ⚠️" : ""}）</option>)}
+          {products.map((p) => <option key={p.id} value={p.id}>{p.name}（存{p.stock ?? 0}{(p.stock ?? 0) <= lowStockThreshold ? " ⚠️" : ""}）</option>)}
         </select>
 
         {pickerProduct?.priceTiers?.length > 0 && (
@@ -572,6 +582,22 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
 
   const recent = purchases.slice(0, 8);
 
+  const deletePurchase = async (p) => {
+    if (!window.confirm(`確定刪除呢筆入貨記錄？（${p.productName} ${p.qty}件，存貨會扣返）`)) return;
+    try {
+      await db.runTransaction(async (tx) => {
+        const prodRef = db.collection("products").doc(p.productId);
+        const snap = await tx.get(prodRef);
+        const cur = snap.exists ? (snap.data().stock || 0) : 0;
+        tx.delete(db.collection("purchases").doc(p.id));
+        if (snap.exists) tx.update(prodRef, { stock: cur - p.qty });
+      });
+      showToast("已刪除，存貨已扣返");
+    } catch (e) {
+      showToast("刪除失敗：" + e.message);
+    }
+  };
+
   return (
     <div style={styles.tabContent}>
       <div style={styles.card}>
@@ -623,6 +649,7 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
               <div style={{ fontSize: 11, color: "#a89b86" }}>{p.date} · {p.qty}件 × ${fmt(p.unitCost)} {p.note && `· ${p.note}`}</div>
             </div>
             <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#16261f", fontSize: 14 }}>-${fmt(p.total)}</div>
+            <button onClick={() => deletePurchase(p)} style={styles.deleteBtn}><ITrash size={13} color="#c4b8a0" /></button>
           </div>
         ))}
       </div>
@@ -633,7 +660,7 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
 /* =========================================================
    PRODUCTS TAB — 產品管理（admin全功能，店員睇存貨/售價，唔見成本）
    ========================================================= */
-function ProductsTab({ products, costs, isAdmin, showToast }) {
+function ProductsTab({ products, costs, isAdmin, showToast, lowStockThreshold }) {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(null);
 
@@ -671,13 +698,13 @@ function ProductsTab({ products, costs, isAdmin, showToast }) {
     } catch (e) { showToast("刪除失敗：" + e.message); }
   };
 
-  const lowStock = products.filter((p) => (p.stock ?? 0) <= LOW_STOCK_THRESHOLD);
+  const lowStock = products.filter((p) => (p.stock ?? 0) <= lowStockThreshold);
 
   return (
     <div style={styles.tabContent}>
       {lowStock.length > 0 && (
         <div style={styles.lowStockBanner}>
-          ⚠️ 存貨偏低（≤{LOW_STOCK_THRESHOLD}件）：{lowStock.map((p) => p.name).join("、")}
+          ⚠️ 存貨偏低（≤{lowStockThreshold}件）：{lowStock.map((p) => p.name).join("、")}
         </div>
       )}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
@@ -693,7 +720,7 @@ function ProductsTab({ products, costs, isAdmin, showToast }) {
             <div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#3a3327" }}>{p.name}</div>
               <div style={{ fontSize: 12, color: "#a89b86", marginTop: 2 }}>
-                {p.category || "未分類"} · 存貨 <b style={{ color: (p.stock ?? 0) <= LOW_STOCK_THRESHOLD ? "#a85454" : "#3a3327" }}>{p.stock ?? 0}</b>{(p.stock ?? 0) <= LOW_STOCK_THRESHOLD && " ⚠️"}
+                {p.category || "未分類"} · 存貨 <b style={{ color: (p.stock ?? 0) <= lowStockThreshold ? "#a85454" : "#3a3327" }}>{p.stock ?? 0}</b>{(p.stock ?? 0) <= lowStockThreshold && " ⚠️"}
                 {isAdmin && <React.Fragment> · 成本 ${fmt(costs[p.id] ?? 0)}</React.Fragment>}
               </div>
             </div>
@@ -935,12 +962,24 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
 /* =========================================================
    SETTINGS TAB — 店員管理 / 匯入 / 匯出 (admin only)
    ========================================================= */
-function SettingsTab({ products, costs, orders, purchases, showToast }) {
+function SettingsTab({ products, costs, orders, purchases, showToast, lowStockThreshold }) {
   const [roles, setRoles] = useState([]);
   const [newUid, setNewUid] = useState("");
   const [newName, setNewName] = useState("");
   const [newRole, setNewRole] = useState("staff");
+  const [thresholdInput, setThresholdInput] = useState(String(lowStockThreshold));
   const fileInputRef = useRef(null);
+
+  useEffect(() => { setThresholdInput(String(lowStockThreshold)); }, [lowStockThreshold]);
+
+  const saveThreshold = async () => {
+    const n = parseFloat(thresholdInput);
+    if (isNaN(n) || n < 0) { showToast("請輸入有效數字"); return; }
+    try {
+      await db.collection("settings").doc("global").set({ lowStockThreshold: n }, { merge: true });
+      showToast("已更新低存貨提示線");
+    } catch (e) { showToast("失敗：" + e.message); }
+  };
 
   useEffect(() => {
     const unsub = db.collection("roles").onSnapshot((snap) => setRoles(snap.docs.map((d) => ({ id: d.id, ...d.data() }))));
@@ -1024,6 +1063,15 @@ function SettingsTab({ products, costs, orders, purchases, showToast }) {
 
   return (
     <div style={styles.tabContent}>
+      <div style={{ ...styles.card, marginBottom: 16 }}>
+        <div style={styles.sectionTitle}>低存貨提示線</div>
+        <div style={{ fontSize: 11, color: "#a89b86", marginBottom: 10 }}>存貨少過或等於呢個數字，就會標紅同顯示⚠️提示</div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <input style={{ ...styles.input, flex: 1 }} type="number" inputMode="decimal" value={thresholdInput} onChange={(e) => setThresholdInput(e.target.value)} />
+          <button onClick={saveThreshold} style={{ ...styles.exportBtn, flexShrink: 0 }}>儲存</button>
+        </div>
+      </div>
+
       <div style={styles.card}>
         <div style={styles.sectionTitle}>店員 / 角色管理</div>
         <div style={{ fontSize: 11, color: "#a89b86", marginBottom: 12, lineHeight: 1.5 }}>
