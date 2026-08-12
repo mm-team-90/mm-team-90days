@@ -276,7 +276,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"}</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v6</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
@@ -1085,7 +1085,7 @@ const styles = {
   logoutBtn: { background: "none", border: "1px solid #e4dbc9", borderRadius: 8, padding: "6px 10px", fontSize: 11, color: "#7a6f5c", cursor: "pointer" },
   body: { flex: 1, overflowY: "auto", paddingBottom: 90 },
   tabContent: { padding: "18px 16px 8px" },
-  card: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 18 },
+  card: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 18, overflow: "hidden" },
   label: { display: "block", fontSize: 12, color: "#8a7f6a", marginTop: 12, marginBottom: 6, fontWeight: 600 },
   input: { width: "100%", maxWidth: "100%", boxSizing: "border-box", padding: "10px 12px", borderRadius: 9, border: "1px solid #e4dbc9", fontSize: 14, background: "#fffdf8", color: "#3a3327", outline: "none", marginBottom: 2 },
   select: { width: "100%", padding: "10px 12px", borderRadius: 9, border: "1px solid #e4dbc9", fontSize: 14, background: "#fffdf8", color: "#3a3327", outline: "none" },
@@ -1102,7 +1102,7 @@ const styles = {
   txDot: { width: 8, height: 8, borderRadius: 4, flexShrink: 0 },
   deleteBtn: { background: "none", border: "none", cursor: "pointer", padding: 4, flexShrink: 0 },
   addProductBtn: { display: "flex", alignItems: "center", gap: 5, background: "#16261f", color: "#fdf8ef", border: "none", borderRadius: 8, padding: "8px 12px", fontSize: 12, fontWeight: 700, cursor: "pointer" },
-  productCard: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 16, marginBottom: 12 },
+  productCard: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 16, marginBottom: 12, overflow: "hidden" },
   smallBtn: { background: "#f7f1e3", border: "none", borderRadius: 7, padding: "6px 10px", fontSize: 12, fontWeight: 600, color: "#7a6f5c", cursor: "pointer" },
   tierDisplayRow: { display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 },
   tierDisplayChip: { background: "#f7f1e3", borderRadius: 8, padding: "5px 10px", fontSize: 12 },
@@ -1118,7 +1118,7 @@ const styles = {
   summaryLabel: { fontSize: 11, color: "#a89b86", marginBottom: 4 },
   summaryValue: { fontSize: 14, fontWeight: 800, fontFamily: "monospace" },
   catRow: { display: "flex", alignItems: "center", background: "#fff", border: "1px solid #ece3d0", borderRadius: 11, padding: "10px 12px", marginBottom: 8 },
-  groupCard: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 12, padding: "10px 12px", marginBottom: 8 },
+  groupCard: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 12, padding: "10px 12px", marginBottom: 8, overflow: "hidden" },
   groupHeader: { display: "flex", alignItems: "center", width: "100%", background: "none", border: "none", cursor: "pointer", padding: 0 },
   roleRow: { display: "flex", alignItems: "center", gap: 8, padding: "8px 0", borderBottom: "1px dashed #ece3d0" },
   exportBtn: { background: "#16261f", color: "#fdf8ef", border: "1px solid #16261f", borderRadius: 8, padding: "9px 12px", fontSize: 12, fontWeight: 700, cursor: "pointer" },
