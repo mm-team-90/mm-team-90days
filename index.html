@@ -471,15 +471,13 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
             );
           })}
 
-          <div style={styles.rowGap}>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <label style={styles.label}>日期</label>
-              <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <label style={styles.label}>客戶/備註</label>
-              <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
-            </div>
+          <div>
+            <label style={styles.label}>日期</label>
+            <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          </div>
+          <div>
+            <label style={styles.label}>客戶/備註</label>
+            <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
           </div>
 
           <div style={styles.totalBar}>
@@ -595,15 +593,13 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
           同時將呢個價更新做產品嘅基本成本
         </label>
 
-        <div style={styles.rowGap}>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <label style={styles.label}>日期</label>
-            <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <label style={styles.label}>備註</label>
-            <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
-          </div>
+        <div>
+          <label style={styles.label}>日期</label>
+          <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        </div>
+        <div>
+          <label style={styles.label}>備註</label>
+          <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
         </div>
 
         <div style={styles.totalBar}>
