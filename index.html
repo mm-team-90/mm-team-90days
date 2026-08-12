@@ -143,7 +143,7 @@ function Loader() {
 }
 
 function LoginScreen() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -151,9 +151,10 @@ function LoginScreen() {
   const handleLogin = async () => {
     setError(""); setBusy(true);
     try {
-      await auth.signInWithEmailAndPassword(email.trim(), password);
+      const email = username.trim().toLowerCase().replace(/\s+/g, "") + "@moneymoney.local";
+      await auth.signInWithEmailAndPassword(email, password);
     } catch (e) {
-      setError("登入失敗，check返email/密碼");
+      setError("登入失敗，check返帳戶名/密碼");
     }
     setBusy(false);
   };
@@ -165,8 +166,8 @@ function LoginScreen() {
           <div style={styles.loadingMark}>H</div>
           <div style={{ marginTop: 10, fontWeight: 800, fontSize: 16, color: "#3a3327" }}>moneymoney 記帳</div>
         </div>
-        <label style={styles.label}>Email</label>
-        <input style={styles.input} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoCapitalize="none" />
+        <label style={styles.label}>帳戶名</label>
+        <input style={styles.input} value={username} onChange={(e) => setUsername(e.target.value)} placeholder="例如：raymond" autoCapitalize="none" />
         <label style={styles.label}>密碼</label>
         <input style={styles.input} type="password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleLogin()} />
         {error && <div style={{ color: "#a85454", fontSize: 12, marginTop: 8 }}>{error}</div>}
@@ -267,7 +268,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email} · {role.role === "admin" ? "管理員" : "店員"}</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"}</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
