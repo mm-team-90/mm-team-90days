@@ -4,6 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <title>moneymoney 記帳</title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="moneymoney" />
+<meta name="theme-color" content="#0f1c15" />
+<link rel="apple-touch-icon" href="data:image/png;base64,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" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2316261f%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 font-family=%22monospace%22 font-weight=%22800%22 fill=%22%23d9f0e2%22 text-anchor=%22middle%22>H</text></svg>">
 
 <!-- React + Babel (cdnjs, works everywhere incl. Claude preview) -->
@@ -70,6 +75,7 @@ const DEFAULT_TIERS = [
   { id: "t2", label: "75折", value: 0 },
   { id: "t3", label: "65折", value: 0 },
 ];
+const LOW_STOCK_THRESHOLD = 5;
 
 /* tiny inline icons */
 const Icon = ({ children, size = 16, color = "currentColor", style }) => (
@@ -154,7 +160,7 @@ function LoginScreen() {
       const email = username.trim().toLowerCase().replace(/\s+/g, "") + "@moneymoney.local";
       await auth.signInWithEmailAndPassword(email, password);
     } catch (e) {
-      setError("登入失敗，check返帳戶名/密碼");
+      setError(`登入失敗 [${e.code || "unknown"}]：${e.message}`);
     }
     setBusy(false);
   };
@@ -266,7 +272,7 @@ function Header({ role, user }) {
   return (
     <div style={styles.header}>
       <div style={styles.headerStamp}>H</div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
         <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"}</div>
       </div>
@@ -358,6 +364,7 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
           date, note: note.trim(),
           items: cart.map(({ key, stockAtAdd, ...rest }) => rest),
           total: cartTotal,
+          status: "completed",
           staffUid: user.uid, staffName: role.name || user.email,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
@@ -385,12 +392,40 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
 
   const recent = orders.slice(0, 6);
 
+  const cancelOrder = async (order) => {
+    if (!window.confirm("確定取消呢張單？存貨會加返。")) return;
+    try {
+      await db.runTransaction(async (tx) => {
+        const productRefs = {};
+        for (const it of order.items || []) {
+          if (!productRefs[it.productId]) {
+            const ref = db.collection("products").doc(it.productId);
+            const snap = await tx.get(ref);
+            productRefs[it.productId] = { ref, data: snap.data() };
+          }
+        }
+        const orderRef = db.collection("orders").doc(order.id);
+        tx.update(orderRef, { status: "cancelled" });
+        const qtyByProduct = {};
+        (order.items || []).forEach((it) => { qtyByProduct[it.productId] = (qtyByProduct[it.productId] || 0) + it.qty; });
+        for (const pid of Object.keys(qtyByProduct)) {
+          if (!productRefs[pid]) continue;
+          const cur = productRefs[pid].data.stock || 0;
+          tx.update(productRefs[pid].ref, { stock: cur + qtyByProduct[pid] });
+        }
+      });
+      showToast("已取消，存貨已加返");
+    } catch (e) {
+      showToast("取消失敗：" + e.message);
+    }
+  };
+
   return (
     <div style={styles.tabContent}>
       <div style={styles.card}>
         <label style={styles.label}>加產品</label>
         <select style={styles.select} value={pickerProductId} onChange={(e) => setPickerProductId(e.target.value)}>
-          {products.map((p) => <option key={p.id} value={p.id}>{p.name}（存{p.stock ?? 0}）</option>)}
+          {products.map((p) => <option key={p.id} value={p.id}>{p.name}（存{p.stock ?? 0}{(p.stock ?? 0) <= LOW_STOCK_THRESHOLD ? " ⚠️" : ""}）</option>)}
         </select>
 
         {pickerProduct?.priceTiers?.length > 0 && (
@@ -409,7 +444,7 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
         )}
 
         <div style={styles.rowGap}>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <label style={styles.label}>數量</label>
             <input style={styles.input} type="number" inputMode="decimal" value={pickerQty} onChange={(e) => setPickerQty(e.target.value)} />
           </div>
@@ -426,7 +461,7 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
             const shortStock = (qtyByProduct[i.productId] || 0) > (i.stockAtAdd ?? 0);
             return (
               <div key={i.key} style={styles.cartRow}>
-                <div style={{ flex: 1 }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 14, fontWeight: 600, color: "#3a3327" }}>{i.productName} <span style={{ fontSize: 11, color: "#a89b86" }}>· {i.tierLabel}</span></div>
                   <div style={{ fontSize: 11, color: shortStock ? "#a85454" : "#a89b86" }}>{i.qty} 件 × ${fmt(i.unitPrice)} {shortStock && "· 存貨可能不足"}</div>
                 </div>
@@ -437,11 +472,11 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
           })}
 
           <div style={styles.rowGap}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={styles.label}>日期</label>
               <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <label style={styles.label}>客戶/備註</label>
               <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
             </div>
@@ -458,23 +493,29 @@ function OrderTab({ products, orders, isAdmin, role, user, showToast }) {
       <div style={{ marginTop: 22 }}>
         <div style={styles.sectionTitle}>最近落單</div>
         {recent.length === 0 && <div style={styles.emptyHint}>未有記錄</div>}
-        {recent.map((o) => <OrderRow key={o.id} order={o} />)}
+        {recent.map((o) => <OrderRow key={o.id} order={o} isAdmin={isAdmin} onCancel={cancelOrder} />)}
       </div>
     </div>
   );
 }
 
-function OrderRow({ order }) {
+function OrderRow({ order, isAdmin, onCancel }) {
+  const cancelled = order.status === "cancelled";
   return (
-    <div style={{ ...styles.txRow, alignItems: "flex-start" }}>
-      <div style={{ ...styles.txDot, background: "#1f8f56", marginTop: 5 }} />
+    <div style={{ ...styles.txRow, alignItems: "flex-start", opacity: cancelled ? 0.5 : 1 }}>
+      <div style={{ ...styles.txDot, background: cancelled ? "#a89b86" : "#1f8f56", marginTop: 5 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, color: "#3a3327", fontWeight: 600 }}>
+        <div style={{ fontSize: 13, color: "#3a3327", fontWeight: 600, textDecoration: cancelled ? "line-through" : "none" }}>
           {(order.items || []).map((i) => `${i.productName}×${i.qty}`).join("、")}
         </div>
-        <div style={{ fontSize: 11, color: "#a89b86" }}>{order.date} · {order.staffName || ""} {order.note && `· ${order.note}`}</div>
+        <div style={{ fontSize: 11, color: "#a89b86" }}>
+          {order.date} · {order.staffName || ""} {order.note && `· ${order.note}`} {cancelled && "· 已取消"}
+        </div>
       </div>
-      <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#1f8f56", fontSize: 14 }}>+${fmt(order.total)}</div>
+      <div style={{ fontFamily: "monospace", fontWeight: 700, color: cancelled ? "#a89b86" : "#1f8f56", fontSize: 14 }}>+${fmt(order.total)}</div>
+      {isAdmin && !cancelled && onCancel && (
+        <button onClick={() => onCancel(order)} style={styles.deleteBtn}><ITrash size={13} color="#c4b8a0" /></button>
+      )}
     </div>
   );
 }
@@ -539,11 +580,11 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
         </select>
 
         <div style={styles.rowGap}>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <label style={styles.label}>入貨數量</label>
             <input style={styles.input} type="number" inputMode="decimal" value={qty} onChange={(e) => setQty(e.target.value)} />
           </div>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <label style={styles.label}>單件成本</label>
             <input style={styles.input} type="number" inputMode="decimal" value={unitCost} onChange={(e) => setUnitCost(e.target.value)} />
           </div>
@@ -555,11 +596,11 @@ function PurchaseTab({ products, costs, purchases, showToast }) {
         </label>
 
         <div style={styles.rowGap}>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <label style={styles.label}>日期</label>
             <input style={styles.input} type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </div>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <label style={styles.label}>備註</label>
             <input style={styles.input} value={note} onChange={(e) => setNote(e.target.value)} placeholder="可選" />
           </div>
@@ -631,8 +672,15 @@ function ProductsTab({ products, costs, isAdmin, showToast }) {
     } catch (e) { showToast("刪除失敗：" + e.message); }
   };
 
+  const lowStock = products.filter((p) => (p.stock ?? 0) <= LOW_STOCK_THRESHOLD);
+
   return (
     <div style={styles.tabContent}>
+      {lowStock.length > 0 && (
+        <div style={styles.lowStockBanner}>
+          ⚠️ 存貨偏低（≤{LOW_STOCK_THRESHOLD}件）：{lowStock.map((p) => p.name).join("、")}
+        </div>
+      )}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
         <div style={styles.sectionTitle}>產品列表</div>
         {isAdmin && <button onClick={openNew} style={styles.addProductBtn}><IPlus size={14} /> 新增產品</button>}
@@ -646,7 +694,7 @@ function ProductsTab({ products, costs, isAdmin, showToast }) {
             <div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#3a3327" }}>{p.name}</div>
               <div style={{ fontSize: 12, color: "#a89b86", marginTop: 2 }}>
-                {p.category || "未分類"} · 存貨 <b style={{ color: (p.stock ?? 0) <= 0 ? "#a85454" : "#3a3327" }}>{p.stock ?? 0}</b>
+                {p.category || "未分類"} · 存貨 <b style={{ color: (p.stock ?? 0) <= LOW_STOCK_THRESHOLD ? "#a85454" : "#3a3327" }}>{p.stock ?? 0}</b>{(p.stock ?? 0) <= LOW_STOCK_THRESHOLD && " ⚠️"}
                 {isAdmin && <React.Fragment> · 成本 ${fmt(costs[p.id] ?? 0)}</React.Fragment>}
               </div>
             </div>
@@ -680,11 +728,11 @@ function ProductsTab({ products, costs, isAdmin, showToast }) {
             <input style={styles.input} value={editing.category} onChange={(e) => setEditing({ ...editing, category: e.target.value })} placeholder="例如：飾物 / 電子 / 其他" />
 
             <div style={styles.rowGap}>
-              <div style={{ flex: 1 }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <label style={styles.label}>成本價</label>
                 <input style={styles.input} type="number" inputMode="decimal" value={editing.cost} onChange={(e) => setEditing({ ...editing, cost: e.target.value })} />
               </div>
-              <div style={{ flex: 1 }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <label style={styles.label}>目前存貨</label>
                 <input style={styles.input} type="number" inputMode="decimal" value={editing.stock} onChange={(e) => setEditing({ ...editing, stock: e.target.value })} />
               </div>
@@ -719,6 +767,8 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
   const [expandedKey, setExpandedKey] = useState(null);
   const [projTierIdx, setProjTierIdx] = useState(0);
 
+  const activeOrders = useMemo(() => orders.filter((o) => o.status !== "cancelled"), [orders]);
+
   const groups = useMemo(() => {
     const map = new Map();
     const put = (dateStr, amount, kind, ref) => {
@@ -731,16 +781,16 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
       if (kind === "out") { g.out += amount; g.orders.push(ref); }
       else { g.in += amount; g.purchases.push(ref); }
     };
-    orders.forEach((o) => put(o.date, o.total, "out", o));
+    activeOrders.forEach((o) => put(o.date, o.total, "out", o));
     if (isAdmin) purchases.forEach((p) => put(p.date, p.total, "in", p));
     return Array.from(map.values()).sort((a, b) => (a.key < b.key ? 1 : -1));
-  }, [orders, purchases, period, isAdmin]);
+  }, [activeOrders, purchases, period, isAdmin]);
 
   const totals = useMemo(() => { const t = { in: 0, out: 0 }; groups.forEach((g) => { t.in += g.in; t.out += g.out; }); return t; }, [groups]);
 
   const categorySummary = useMemo(() => {
     const map = new Map();
-    orders.forEach((o) => (o.items || []).forEach((it) => {
+    activeOrders.forEach((o) => (o.items || []).forEach((it) => {
       const prod = products.find((p) => p.id === it.productId);
       const cat = prod?.category || "未分類";
       if (!map.has(cat)) map.set(cat, { cat, qty: 0, revenue: 0, cost: 0 });
@@ -750,14 +800,28 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
       if (isAdmin) g.cost += (costs[it.productId] || 0) * it.qty;
     }));
     return Array.from(map.values()).sort((a, b) => b.revenue - a.revenue);
-  }, [orders, products, costs, isAdmin]);
+  }, [activeOrders, products, costs, isAdmin]);
 
   const realizedProfit = useMemo(() => {
     if (!isAdmin) return 0;
     let p = 0;
-    orders.forEach((o) => (o.items || []).forEach((it) => { p += (it.unitPrice - (costs[it.productId] || 0)) * it.qty; }));
+    activeOrders.forEach((o) => (o.items || []).forEach((it) => { p += (it.unitPrice - (costs[it.productId] || 0)) * it.qty; }));
     return p;
-  }, [orders, costs, isAdmin]);
+  }, [activeOrders, costs, isAdmin]);
+
+  const todayStaffSummary = useMemo(() => {
+    if (!isAdmin) return [];
+    const today = todayStr();
+    const map = new Map();
+    activeOrders.filter((o) => o.date === today).forEach((o) => {
+      const name = o.staffName || "未知";
+      if (!map.has(name)) map.set(name, { name, count: 0, total: 0 });
+      const g = map.get(name);
+      g.count += 1; g.total += o.total;
+    });
+    return Array.from(map.values()).sort((a, b) => b.total - a.total);
+  }, [activeOrders, isAdmin]);
+
 
   const potentialProfit = useMemo(() => {
     if (!isAdmin) return 0;
@@ -786,6 +850,18 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
         {isAdmin && <div style={{ ...styles.summaryCard, borderColor: "#e4dbc9" }}><div style={styles.summaryLabel}>已實現利潤</div><div style={{ ...styles.summaryValue, color: realizedProfit >= 0 ? "#1f8f56" : "#16261f" }}>{realizedProfit >= 0 ? "+" : ""}${fmt(realizedProfit)}</div></div>}
       </div>
 
+      {isAdmin && todayStaffSummary.length > 0 && (
+        <div style={{ ...styles.card, marginBottom: 20 }}>
+          <div style={styles.sectionTitle}>今日店員結算</div>
+          {todayStaffSummary.map((s) => (
+            <div key={s.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0" }}>
+              <div style={{ fontSize: 13, color: "#3a3327" }}>{s.name} <span style={{ fontSize: 11, color: "#a89b86" }}>· {s.count}張單</span></div>
+              <div style={{ fontFamily: "monospace", fontWeight: 700, color: "#1f8f56" }}>${fmt(s.total)}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {isAdmin && (
         <div style={{ ...styles.card, marginBottom: 20 }}>
           <div style={styles.sectionTitle}>可預計盈利</div>
@@ -812,7 +888,7 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
       {categorySummary.length === 0 && <div style={styles.emptyHint}>未有銷售資料</div>}
       {categorySummary.map((c) => (
         <div key={c.cat} style={styles.catRow}>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: "#3a3327" }}>{c.cat}</div>
             <div style={{ fontSize: 11, color: "#a89b86" }}>賣出 {c.qty} 件{isAdmin && ` · 利潤 $${fmt(c.revenue - c.cost)}`}</div>
           </div>
@@ -837,7 +913,7 @@ function StatsTab({ orders, purchases, products, costs, isAdmin }) {
             </button>
             {expanded && (
               <div style={{ marginTop: 6 }}>
-                {g.orders.map((o) => <OrderRow key={o.id} order={o} />)}
+                {g.orders.map((o) => <OrderRow key={o.id} order={o} isAdmin={isAdmin} />)}
                 {isAdmin && g.purchases.map((p) => (
                   <div key={p.id} style={styles.txRow}>
                     <div style={{ ...styles.txDot, background: "#16261f" }} />
@@ -956,7 +1032,7 @@ function SettingsTab({ products, costs, orders, purchases, showToast }) {
         </div>
         {roles.map((r) => (
           <div key={r.id} style={styles.roleRow}>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 13, fontWeight: 600, color: "#3a3327" }}>{r.name}</div>
               <div style={{ fontSize: 10, color: "#a89b86", fontFamily: "monospace" }}>{r.id}</div>
             </div>
@@ -1013,7 +1089,7 @@ const styles = {
   tabContent: { padding: "18px 16px 8px" },
   card: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 18 },
   label: { display: "block", fontSize: 12, color: "#8a7f6a", marginTop: 12, marginBottom: 6, fontWeight: 600 },
-  input: { width: "100%", padding: "10px 12px", borderRadius: 9, border: "1px solid #e4dbc9", fontSize: 14, background: "#fffdf8", color: "#3a3327", outline: "none", marginBottom: 2 },
+  input: { width: "100%", maxWidth: "100%", boxSizing: "border-box", padding: "10px 12px", borderRadius: 9, border: "1px solid #e4dbc9", fontSize: 14, background: "#fffdf8", color: "#3a3327", outline: "none", marginBottom: 2 },
   select: { width: "100%", padding: "10px 12px", borderRadius: 9, border: "1px solid #e4dbc9", fontSize: 14, background: "#fffdf8", color: "#3a3327", outline: "none" },
   tierRow: { display: "flex", gap: 8, flexWrap: "wrap" },
   tierChip: { flex: "1 1 70px", border: "1.5px solid #e4dbc9", borderRadius: 10, padding: "8px 6px", background: "#fff", cursor: "pointer", textAlign: "center", fontSize: 13 },
@@ -1032,6 +1108,7 @@ const styles = {
   smallBtn: { background: "#f7f1e3", border: "none", borderRadius: 7, padding: "6px 10px", fontSize: 12, fontWeight: 600, color: "#7a6f5c", cursor: "pointer" },
   tierDisplayRow: { display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 },
   tierDisplayChip: { background: "#f7f1e3", borderRadius: 8, padding: "5px 10px", fontSize: 12 },
+  lowStockBanner: { background: "#fbeceb", border: "1px solid #edd0cd", color: "#a85454", fontSize: 12, borderRadius: 10, padding: "10px 12px", marginBottom: 14, lineHeight: 1.5 },
   modalOverlay: { position: "fixed", inset: 0, background: "rgba(58,51,39,0.45)", display: "flex", alignItems: "flex-end", justifyContent: "center", zIndex: 50 },
   modal: { background: "#fdf8ef", width: "100%", maxWidth: 480, borderRadius: "18px 18px 0 0", padding: 20, maxHeight: "85vh", overflowY: "auto" },
   addTierBtn: { display: "flex", alignItems: "center", gap: 4, background: "none", border: "1px solid #e4dbc9", borderRadius: 7, padding: "5px 9px", fontSize: 11, fontWeight: 600, color: "#7a6f5c", cursor: "pointer" },
