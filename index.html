@@ -54,6 +54,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(() => {});
 const db = firebase.firestore();
 
 /* ---------- helpers ---------- */
@@ -276,7 +277,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v7</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v8</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
