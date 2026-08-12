@@ -25,7 +25,7 @@
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; padding: 0; background: #fdf8ef; }
   body { font-family: 'Noto Sans HK', 'PingFang HK', -apple-system, sans-serif; }
-  input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5) sepia(0.3); }
+  input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.55; background: transparent; padding: 0; margin: 0; }
   input[type="date"] { min-width: 0; box-sizing: border-box; }
   html, body { overflow-x: hidden; width: 100%; }
   ::placeholder { color: #c4b8a0; }
@@ -276,7 +276,7 @@ function Header({ role, user }) {
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v6</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v7</div>
       </div>
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
