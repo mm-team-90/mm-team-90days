@@ -204,6 +204,15 @@ function App({ user, role }) {
   const [orders, setOrders] = useState([]);
   const [purchases, setPurchases] = useState([]);
   const [lowStockThreshold, setLowStockThreshold] = useState(DEFAULT_LOW_STOCK_THRESHOLD);
+  const [notifPermission, setNotifPermission] = useState(typeof Notification !== "undefined" ? Notification.permission : "unsupported");
+  const isFirstOrdersSnapshot = useRef(true);
+
+  const requestNotifPermission = useCallback(async () => {
+    if (typeof Notification === "undefined") { showToast("呢個瀏覽器唔支援通知"); return; }
+    const perm = await Notification.requestPermission();
+    setNotifPermission(perm);
+    if (perm === "granted") showToast("已開啟通知"); else showToast("通知被拒絕，可以喺瀏覽器設定度再開返");
+  }, [showToast]);
 
   useEffect(() => {
     const unsub = db.collection("settings").doc("global").onSnapshot((snap) => {
@@ -237,9 +246,28 @@ function App({ user, role }) {
   useEffect(() => {
     const unsub = db.collection("orders").orderBy("createdAt", "desc").limit(500).onSnapshot((snap) => {
       setOrders(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+
+      if (isFirstOrdersSnapshot.current) {
+        isFirstOrdersSnapshot.current = false;
+        return;
+      }
+      if (notifPermission !== "granted") return;
+      snap.docChanges().forEach((change) => {
+        if (change.type !== "added") return;
+        const o = change.doc.data();
+        if (o.staffUid === user.uid) return; // don't notify yourself for your own order
+        try {
+          const items = (o.items || []).map((i) => `${i.productName}×${i.qty}`).join("、");
+          new Notification(`新落單 · ${o.staffName || "店員"}`, {
+            body: `${items || "1張單"} · $${fmt(o.total || 0)}`,
+            icon: "data:image/png;base64,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",
+            tag: change.doc.id,
+          });
+        } catch (e) {}
+      });
     });
     return unsub;
-  }, []);
+  }, [notifPermission, user.uid]);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -267,7 +295,7 @@ function App({ user, role }) {
 
   return (
     <div style={styles.app}>
-      <Header role={role} user={user} />
+      <Header role={role} user={user} notifPermission={notifPermission} requestNotifPermission={requestNotifPermission} />
       <div style={styles.body}>
         {tab === "order" && <OrderTab products={products} orders={orders} isAdmin={isAdmin} role={role} user={user} showToast={showToast} lowStockThreshold={lowStockThreshold} />}
         {tab === "purchase" && isAdmin && <PurchaseTab products={products} costs={costs} purchases={purchases} showToast={showToast} />}
@@ -281,14 +309,17 @@ function App({ user, role }) {
   );
 }
 
-function Header({ role, user }) {
+function Header({ role, user, notifPermission, requestNotifPermission }) {
   return (
     <div style={styles.header}>
       <div style={styles.headerStamp}>H</div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={styles.headerTitle}>moneymoney 記帳</div>
-        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v10</div>
+        <div style={styles.headerSub}>{role.name || user.email.split("@")[0]} · {role.role === "admin" ? "管理員" : "店員"} · v11</div>
       </div>
+      {notifPermission !== "unsupported" && notifPermission !== "granted" && (
+        <button onClick={requestNotifPermission} style={styles.notifBtn}>🔔 開啟通知</button>
+      )}
       <button onClick={() => auth.signOut()} style={styles.logoutBtn}>登出</button>
     </div>
   );
@@ -1173,6 +1204,7 @@ const styles = {
   headerTitle: { fontSize: 15, fontWeight: 800, color: "#3a3327" },
   headerSub: { fontSize: 11, color: "#a89b86", marginTop: 1 },
   logoutBtn: { background: "none", border: "1px solid #e4dbc9", borderRadius: 8, padding: "6px 10px", fontSize: 11, color: "#7a6f5c", cursor: "pointer" },
+  notifBtn: { background: "#f7f1e3", border: "1px solid #e4dbc9", borderRadius: 8, padding: "6px 10px", fontSize: 11, color: "#7a6f5c", cursor: "pointer", marginRight: 8, whiteSpace: "nowrap", flexShrink: 0 },
   body: { flex: 1, overflowY: "auto", paddingBottom: 90 },
   tabContent: { padding: "18px 16px 8px" },
   card: { background: "#fff", border: "1px solid #ece3d0", borderRadius: 14, padding: 18, overflow: "hidden" },
